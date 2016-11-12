@@ -11,25 +11,25 @@ var database = firebase.database();
 
 // Initial Values
     var name = "";
-    var email = "";
-    var age = 0;
-    var comment = "";
+    var role = "";
+    var startDate = "";
+    var monthRate = "";
 
     // Capture Button Click
-    $("#add-user").on("click", function() {
+    $("#submit").on("click", function() {
 
       // Grabbed values from text boxes
-      name = $("#name-input").val().trim();
-      email = $("#email-input").val().trim();
-      age = $("#age-input").val().trim();
-      comment = $("#comment-input").val().trim();
+      name = $("#ee-name").val().trim();
+      role = $("#role").val().trim();
+      startDate = $("#start-date").val().trim();
+      monthRate = $("#month-rate").val().trim();
 
       // Code for handling the push
       database.ref().push({
         name: name,
-        email: email,
-        age: age,
-        comment: comment
+        role: role,
+        startDate: startDate,
+        monthRate: monthRate
       });
 
       // Don't refresh the page!
@@ -42,15 +42,15 @@ var database = firebase.database();
       // Log everything that's coming out of snapshot
       console.log(snapshot.val());
       console.log(snapshot.val().name);
-      console.log(snapshot.val().email);
-      console.log(snapshot.val().age);
-      console.log(snapshot.val().comment);
+      console.log(snapshot.val().role);
+      console.log(snapshot.val().startDate);
+      console.log(snapshot.val().monthRate);
 
-      // Change the HTML to reflect
-      $("#name-display").html(snapshot.val().name);
-      $("#email-display").html(snapshot.val().email);
-      $("#age-display").html(snapshot.val().age);
-      $("#comment-display").html(snapshot.val().comment);
+      // // Change the HTML to reflect
+      // $("#name-display").html(snapshot.val().name);
+      // $("#email-display").html(snapshot.val().email);
+      // $("#age-display").html(snapshot.val().age);
+      // $("#comment-display").html(snapshot.val().comment);
 
     // Handle the errors
     }, function(errorObject) {
