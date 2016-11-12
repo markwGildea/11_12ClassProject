@@ -9,58 +9,79 @@
    <title>NY Times Search</title>
 </head>
 <div class="container">
-   <!-- HEADER -->
-   <div class="row">
-       <div class="col-sm-12 jumbotron text-center">
-           <h1>Employee Management</h1>
-       </div>
-   </div>
-   <!-- SEARCH PARAMETERS SECTION -->
-   <div class="row panel">
-       <div class="row">
-           <div class="col-sm-12">
-               <h4>Add Employee</h4>
-           </div>
-       </div>
-       <div class="row">
-           <div class="col-sm-12">
-               <div class="form-group">
-                   <label>Employee Name:</label>
-                   <input class="form-control" id="ee-name" type="text">
-               </div>
-           </div>
-       </div>
-       <div class="row">
-           <div class="col-sm-12">
-               <div class="form-group">
-                   <label>Role:</label>
-                   <input class="form-control" id="role" type="text">
-               </div>
-           </div>
-       </div>
-       <div class="row">
-           <div class="col-sm-12">
-               <div class="form-group">
-                   <label>Start Date (DD/MM/YY - ex: 01/01/89):</label>
-                   <input class="form-control" id="start-date" type="text">
-               </div>
-           </div>
-       </div>
-       <div class="row">
-           <div class="col-sm-12">
-               <div class="form-group">
-                   <label>Monthly Rate ($)</label>
-                   <input class="form-control" id="month-rate" type="text">
-               </div>
-           </div>
-       </div>
-       <div class="row">
-           <div class="col-sm-12">
-               <input class="btn button button-info" type="submit" value="Submit" id="submit">
-           </div>
-       </div>
-   </div>
-
+  <!-- HEADER -->
+  <div class="row">
+      <div class="col-sm-12 jumbotron text-center">
+          <h1>Employee Management</h1>
+      </div>
+  </div>
+  <!--Panel-->
+  <div class="row panel">
+      <div class="row">
+          <div id="ee-list" class="col-sm-12">
+            <h2>Employee List</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Role</th>
+        <th>Start Date</th>
+        <th>Months Worked</th>
+        <th>Monthly Rate ($)</th>
+        <th>Total Billed</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+    </tbody>
+  </table>
+          </div>
+      </div>
+  </div>
+  <!-- SEARCH PARAMETERS SECTION -->
+  <div class="row panel">
+      <div class="row">
+          <div class="col-sm-12">
+              <h4>Add Employee</h4>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="form-group">
+                  <label>Employee Name:</label>
+                  <input class="form-control" id="ee-name" type="text">
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="form-group">
+                  <label>Role:</label>
+                  <input class="form-control" id="role" type="text">
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="form-group">
+                  <label>Start Date (DD/MM/YY - ex: 01/01/89):</label>
+                  <input class="form-control" id="start-date" type="text">
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="form-group">
+                  <label>Monthly Rate ($)</label>
+                  <input class="form-control" id="month-rate" type="text">
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+              <input class="btn button button-info" type="submit" value="Submit" id="submit">
+          </div>
+      </div>
+  </div>
 <script src="dataApp.js"></script>
 
 <body>

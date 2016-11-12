@@ -36,6 +36,27 @@ var database = firebase.database();
       return false;
     });
 
+    database.ref().on("child_added", function(childSnapshot) {
+
+      // Log everything that's coming out of snapshot
+      console.log(childSnapshot.val().name);
+      console.log(childSnapshot.val().role);
+      console.log(childSnapshot.val().startDate);
+      console.log(childSnapshot.val().monthRate);
+
+
+      // full list of items to the well
+      $("#tbody").append("<tr><td> " + childSnapshot.val().name +
+        " </td><td> " + childSnapshot.val().role +
+        " </td><td id='startDate'> " + childSnapshot.val().startDate +
+        " </td><td></td><td id='monthRate'> " + childSnapshot.val().monthRate + " </td><td></td></tr>");
+
+      // Handle the errors
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
+
+
     // Firebase watcher + initial loader HINT: .on("value")
     database.ref().on("value", function(snapshot) {
 
@@ -46,11 +67,11 @@ var database = firebase.database();
       console.log(snapshot.val().startDate);
       console.log(snapshot.val().monthRate);
 
-      // // Change the HTML to reflect
+      // Change the HTML to reflect
       // $("#name-display").html(snapshot.val().name);
-      // $("#email-display").html(snapshot.val().email);
-      // $("#age-display").html(snapshot.val().age);
-      // $("#comment-display").html(snapshot.val().comment);
+      // $("#email-display").html(snapshot.val().role);
+      // $("#age-display").html(snapshot.val().startDate);
+      // $("#comment-display").html(snapshot.val().monthRate);
 
     // Handle the errors
     }, function(errorObject) {
