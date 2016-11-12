@@ -14,6 +14,10 @@ var database = firebase.database();
     var role = "";
     var startDate = "";
     var monthRate = "";
+    var monthsWorked ="";
+    var convertedStartDate ="";
+
+
 
     // Capture Button Click
     $("#submit").on("click", function() {
@@ -22,14 +26,21 @@ var database = firebase.database();
       name = $("#ee-name").val().trim();
       role = $("#role").val().trim();
       startDate = $("#start-date").val().trim();
+      //startDate = moment($("#").val().trim(), "DD/MM/YY").format("X");
+      convertedStartDate = moment(new Date(startDate));
+      monthsWorked = moment(convertedStartDate).diff(moment(),"months");
       monthRate = $("#month-rate").val().trim();
+
+      console.log("inside",monthsWorked);
+      console.log("insidestartDate",convertedStartDate);
 
       // Code for handling the push
       database.ref().push({
         name: name,
         role: role,
         startDate: startDate,
-        monthRate: monthRate
+        monthsWorked: monthsWorked,
+        monthRate: monthRate,
       });
 
       // Don't refresh the page!
@@ -42,14 +53,17 @@ var database = firebase.database();
       console.log(childSnapshot.val().name);
       console.log(childSnapshot.val().role);
       console.log(childSnapshot.val().startDate);
+      console.log(childSnapshot.val().monthsWorked);
       console.log(childSnapshot.val().monthRate);
+
+
 
 
       // full list of items to the well
       $("#tbody").append("<tr><td> " + childSnapshot.val().name +
         " </td><td> " + childSnapshot.val().role +
         " </td><td id='startDate'> " + childSnapshot.val().startDate +
-        " </td><td></td><td id='monthRate'> " + childSnapshot.val().monthRate + " </td><td></td></tr>");
+        " </td><td>" + childSnapshot.val().monthsWorked + "</td><td id='monthRate'> " + childSnapshot.val().monthRate + " </td><td></td></tr>");
 
       // Handle the errors
     }, function(errorObject) {
@@ -77,3 +91,8 @@ var database = firebase.database();
     }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);
     });
+
+
+    console.log("outside", convertedStartDate);
+
+    console.log("outside", monthsWorked);
